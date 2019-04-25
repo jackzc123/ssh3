@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.5//EN"
+        "http://struts.apache.org/dtds/struts-2.5.dtd">
+
+<struts>
+
+    <package name="abc" extends="struts-default" >
+        <interceptors>
+            <interceptor-stack name="sshStack">
+                <interceptor-ref name="paramsPrepareParamsStack">
+                    <param name="prepare">false</param>
+                </interceptor-ref>
+            </interceptor-stack>
+        </interceptors>
+
+        <default-interceptor-ref name="sshStack"></default-interceptor-ref>
+
+        <action name="employList" class="com.usoft.action.EmployeeAction" method="employList">
+            <result>/pages/employList.jsp</result>
+        </action>
+
+        <action name="employDelete" class="com.usoft.action.EmployeeAction" method="employDelete">
+            <result type="redirect" name="success">/employList</result>
+        </action>
+
+        <action name="toAdd" class="com.usoft.action.EmployeeAction" method="toAdd">
+            <result name="success">/pages/employAdd.jsp</result>
+        </action>
+
+        <action name="employeeAdd" class="com.usoft.action.EmployeeAction" method="employAdd">
+            <result type="redirect">/employList</result>
+        </action>
+
+        <action name="toUpdate" class="com.usoft.action.EmployeeAction" method="toUpdate">
+            <result name="success">/pages/employAdd.jsp</result>
+        </action>
+    </package>
+</struts>
